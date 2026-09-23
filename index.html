@@ -3,90 +3,297 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Diseños de Muestra — Isabella Moretti</title>
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      body {
-        font-family: Georgia, serif;
-        background: #f5f1e8;
-        color: #2a1418;
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 2rem;
-      }
-      .container {
-        max-width: 600px;
-        width: 100%;
-        text-align: center;
-      }
-      h1 {
-        font-size: 1.8rem;
-        font-weight: 400;
-        letter-spacing: 2px;
-        margin-bottom: 0.5rem;
-      }
-      p {
-        color: #6b5a5e;
-        font-style: italic;
-        margin-bottom: 3rem;
-      }
-      .links {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-      }
-      a {
-        display: block;
-        padding: 1.5rem 2rem;
-        background: #fff;
-        border: 1px solid #c9a961;
-        color: #2a1418;
-        text-decoration: none;
-        font-size: 1rem;
-        letter-spacing: 1px;
-        transition: all 0.3s;
-      }
-      a:hover {
-        background: #c9a961;
-        color: #fff;
-      }
-      a span {
-        display: block;
-        font-size: 0.8rem;
-        color: #6b5a5e;
-        margin-top: 0.3rem;
-        letter-spacing: 0;
-        font-style: italic;
-      }
-      a:hover span {
-        color: #f5f1e8;
-      }
-    </style>
+    <title>Karla Argueta — Soprano</title>
+    <meta
+      name="description"
+      content="Sitio oficial de Karla Argueta, soprano lírica. Biografía, próximos conciertos, galería y contacto."
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🎭%3C/text%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="/css/style.css" />
   </head>
   <body>
-    <div class="container">
-      <h1>Isabella Moretti</h1>
-      <p>Seleccione un diseño para ver la muestra</p>
-      <div class="links">
-        <a href="variant-1-classic.html">
-          Diseño 1 — Clásico de Ópera
-          <span>Borgoña y dorado · Tradicional y prestigioso</span>
+    <header class="header" id="header">
+      <div class="container header-inner">
+        <a href="index.html" class="logo">
+          KARLA
+          <span>ARGUETA</span>
         </a>
-        <a href="variant-2-minimal.html">
-          Diseño 2 — Minimalista
-          <span>Marfil y negro · Editorial y moderno</span>
-        </a>
-        <a href="variant-3-royal.html">
-          Diseño 3 — Real
-          <span>Azul real y dorado · Regio y noble</span>
-        </a>
+        <nav class="nav" id="nav">
+          <ul>
+            <li><a href="index.html" class="active">Inicio</a></li>
+            <li><a href="biography.html">Biografía</a></li>
+            <li><a href="gallery.html">Galería</a></li>
+            <li><a href="concerts.html">Conciertos</a></li>
+            <li><a href="press.html">Prensa</a></li>
+            <li><a href="contact.html">Contacto</a></li>
+          </ul>
+        </nav>
+        <button class="hamburger" id="hamburger" aria-label="Menú">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
-    </div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-content">
+        <span class="eyebrow">Soprano · Ópera y Recital</span>
+        <h1>
+          KARLA
+          <span>ARGUETA</span>
+        </h1>
+        <div class="divider"></div>
+        <p class="tagline">"La voz que transforma el silencio en emoción."</p>
+        <div class="hero-buttons">
+          <a href="concerts.html" class="btn btn-primary">
+            Próximos conciertos
+          </a>
+          <a href="contact.html" class="btn btn-outline">Contratar</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-dark">
+      <div class="container">
+        <div style="text-align: center;">
+          <span class="eyebrow fade-in">Bienvenida</span>
+          <h2
+            class="section-title fade-in"
+            style="color: var(--cream); font-style: italic;"
+          >
+            "La ópera es la vida en su forma más pura."
+          </h2>
+          <p
+            class="section-subtitle fade-in"
+            style="color: var(--gold-light); margin: 1rem auto 3rem;"
+          >
+            Soprano lírica con más de quince años de trayectoria en los
+            principales teatros de Europa y América. Su repertorio abarca desde
+            el bel canto italiano hasta la ópera contemporánea.
+          </p>
+          <a href="biography.html" class="btn btn-outline fade-in">
+            Conocer más
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container bio-grid">
+        <div class="bio-photo fade-in">
+          <img src="/images/opera/KARLA-portrait.jpg" alt="Karla Argueta" />
+        </div>
+        <div class="bio-text fade-in">
+          <span class="eyebrow">Sobre la artista</span>
+          <h2>Una voz forjada en los grandes escenarios.</h2>
+          <p>
+            Karla Argueta ha interpretado roles principales en La Scala de
+            Milán, el Teatro Real de Madrid, la Ópera de Viena y el Metropolitan
+            Opera de Nueva York.
+          </p>
+          <p>
+            Colabora regularmente con directores de la talla de Riccardo Muti,
+            Gustavo Dudamel y Zubin Mehta.
+          </p>
+          <a
+            href="biography.html"
+            class="btn btn-primary"
+            style="margin-top: 1rem;"
+          >
+            Leer biografía completa
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <div style="text-align: center;">
+          <span class="eyebrow fade-in">Repertorio</span>
+          <h2
+            class="section-title fade-in"
+            style="color: var(--wine); font-style: italic;"
+          >
+            Roles destacados
+          </h2>
+          <p class="section-subtitle fade-in" style="margin: 1rem auto 4rem;">
+            Un repertorio que abarca tres siglos de ópera
+          </p>
+        </div>
+        <div class="roles-grid">
+          <div class="role-card fade-in" style="background: transparent;">
+            <div class="opera">La Traviata</div>
+            <h3 style="color: var(--wine);">Violetta Valéry</h3>
+            <div class="composer" style="color: var(--text-dim);">
+              Giuseppe Verdi
+            </div>
+          </div>
+          <div class="role-card fade-in" style="background: transparent;">
+            <div class="opera">Madama Butterfly</div>
+            <h3 style="color: var(--wine);">Cio-Cio San</h3>
+            <div class="composer" style="color: var(--text-dim);">
+              Giacomo Puccini
+            </div>
+          </div>
+          <div class="role-card fade-in" style="background: transparent;">
+            <div class="opera">Tosca</div>
+            <h3 style="color: var(--wine);">Floria Tosca</h3>
+            <div class="composer" style="color: var(--text-dim);">
+              Giacomo Puccini
+            </div>
+          </div>
+        </div>
+        <div style="text-align: center; margin-top: 3rem;">
+          <a
+            href="biography.html"
+            class="btn btn-outline"
+            style="color: var(--wine); border-color: var(--wine);"
+          >
+            Ver todos los roles
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div style="text-align: center;">
+          <span class="eyebrow fade-in">Próximas fechas</span>
+          <h2
+            class="section-title fade-in"
+            style="color: var(--wine); font-style: italic;"
+          >
+            En escena
+          </h2>
+        </div>
+        <div class="concert-list" style="margin-top: 3rem;">
+          <div class="concert-item fade-in">
+            <div class="concert-date">
+              <span class="day">15</span>
+              <span class="month">Mar</span>
+            </div>
+            <div class="concert-info">
+              <h3>Recital de Lieder — Schubert y Brahms</h3>
+              <div class="venue">Teatro Colón · Buenos Aires, Argentina</div>
+            </div>
+            <a href="concerts.html" class="btn btn-outline">Detalles</a>
+          </div>
+          <div class="concert-item fade-in">
+            <div class="concert-date">
+              <span class="day">02</span>
+              <span class="month">Abr</span>
+            </div>
+            <div class="concert-info">
+              <h3>La Traviata — Violetta</h3>
+              <div class="venue">Ópera de Viena · Viena, Austria</div>
+            </div>
+            <a href="concerts.html" class="btn btn-outline">Detalles</a>
+          </div>
+          <div class="concert-item fade-in">
+            <div class="concert-date">
+              <span class="day">21</span>
+              <span class="month">May</span>
+            </div>
+            <div class="concert-info">
+              <h3>Concierto de Gala — Arias y Dúos</h3>
+              <div class="venue">
+                Palacio de Bellas Artes · Ciudad de México
+              </div>
+            </div>
+            <a href="concerts.html" class="btn btn-outline">Detalles</a>
+          </div>
+        </div>
+        <div style="text-align: center; margin-top: 3rem;">
+          <a href="concerts.html" class="btn btn-primary">
+            Ver calendario completo
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-dark">
+      <div class="container" style="text-align: center;">
+        <span class="eyebrow fade-in">Contacto</span>
+        <h2
+          class="section-title fade-in"
+          style="color: var(--cream); font-style: italic;"
+        >
+          Contrataciones y prensa
+        </h2>
+        <p
+          class="section-subtitle fade-in"
+          style="color: var(--gold-light); margin: 1rem auto 3rem;"
+        >
+          Para invitaciones, colaboraciones o solicitudes de prensa, por favor
+          contacte con representación.
+        </p>
+        <a href="contact.html" class="btn btn-primary fade-in">Contactar</a>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="index.html" class="logo">
+              KARLA
+              <span>ARGUETA</span>
+            </a>
+            <p>Soprano lírica. Ópera y recital.</p>
+            <div class="social-icons">
+              <a href="#" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="#" aria-label="Facebook">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="#" aria-label="YouTube">
+                <i class="fab fa-youtube"></i>
+              </a>
+            </div>
+          </div>
+          <div>
+            <h4>Navegación</h4>
+            <ul class="footer-links">
+              <li><a href="index.html">Inicio</a></li>
+              <li><a href="biography.html">Biografía</a></li>
+              <li><a href="gallery.html">Galería</a></li>
+              <li><a href="concerts.html">Conciertos</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Contacto</h4>
+            <ul class="footer-links">
+              <li><a href="press.html">Prensa</a></li>
+              <li><a href="contact.html">Contacto</a></li>
+              <li>
+                <a href="mailto:contacto@KARLAARGUETA.com">
+                  contacto@KARLAARGUETA.com
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          © 2026 Karla Argueta · Todos los derechos reservados
+        </div>
+      </div>
+    </footer>
+
+    <script src="/js/script.js"></script>
   </body>
 </html>
