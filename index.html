@@ -25,20 +25,21 @@
     <link rel="stylesheet" href="/css/style.css" />
   </head>
   <body>
+    <!-- ============ HEADER ============ -->
     <header class="header" id="header">
       <div class="container header-inner">
-        <a href="index.html" class="logo">
+        <a href="#home" class="logo" data-link="home">
           KARLA
           <span>ARGUETA</span>
         </a>
         <nav class="nav" id="nav">
           <ul>
-            <li><a href="index.html" class="active">Inicio</a></li>
-            <li><a href="biography.html">Biografía</a></li>
-            <li><a href="gallery.html">Galería</a></li>
-            <li><a href="concerts.html">Conciertos</a></li>
-            <li><a href="press.html">Prensa</a></li>
-            <li><a href="contact.html">Contacto</a></li>
+            <li><a href="#home" data-link="home" class="active">Inicio</a></li>
+            <li><a href="#biography" data-link="biography">Biografía</a></li>
+            <li><a href="#gallery" data-link="gallery">Galería</a></li>
+            <li><a href="#concerts" data-link="concerts">Conciertos</a></li>
+            <li><a href="#press" data-link="press">Prensa</a></li>
+            <li><a href="#contact" data-link="contact">Contacto</a></li>
           </ul>
         </nav>
         <button class="hamburger" id="hamburger" aria-label="Menú">
@@ -49,207 +50,933 @@
       </div>
     </header>
 
-    <section class="hero">
-      <div class="hero-content">
-        <span class="eyebrow">Soprano · Ópera y Recital</span>
-        <h1>
-          KARLA
-          <span>ARGUETA</span>
-        </h1>
-        <div class="divider"></div>
-        <p class="tagline">"La voz que transforma el silencio en emoción."</p>
-        <div class="hero-buttons">
-          <a href="concerts.html" class="btn btn-primary">
-            Próximos conciertos
-          </a>
-          <a href="contact.html" class="btn btn-outline">Contratar</a>
+    <main>
+      <!-- ============ PAGE: HOME ============ -->
+      <section class="page active" id="home">
+        <div class="hero">
+          <div class="hero-content">
+            <span class="eyebrow">Soprano · Ópera y Recital</span>
+            <h1>
+              KARLA
+              <span>ARGUETA</span>
+            </h1>
+            <div class="divider"></div>
+            <p class="tagline">
+              "La voz que transforma el silencio en emoción."
+            </p>
+            <div class="hero-buttons">
+              <a href="#concerts" data-link="concerts" class="btn btn-primary">
+                Próximos conciertos
+              </a>
+              <a href="#contact" data-link="contact" class="btn btn-outline">
+                Contratar
+              </a>
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
 
-    <section class="section section-dark">
-      <div class="container">
-        <div style="text-align: center;">
-          <span class="eyebrow fade-in">Bienvenida</span>
-          <h2
-            class="section-title fade-in"
-            style="color: var(--cream); font-style: italic;"
-          >
-            "La ópera es la vida en su forma más pura."
-          </h2>
-          <p
-            class="section-subtitle fade-in"
-            style="color: var(--gold-light); margin: 1rem auto 3rem;"
-          >
-            Soprano lírica con más de quince años de trayectoria en los
-            principales teatros de Europa y América. Su repertorio abarca desde
-            el bel canto italiano hasta la ópera contemporánea.
-          </p>
-          <a href="biography.html" class="btn btn-outline fade-in">
-            Conocer más
-          </a>
+        <div class="section section-dark">
+          <div class="container">
+            <div style="text-align: center">
+              <span class="eyebrow fade-in">Bienvenida</span>
+              <h2
+                class="section-title fade-in"
+                style="color: var(--cream); font-style: italic"
+              >
+                "La ópera es la vida en su forma más pura."
+              </h2>
+              <p
+                class="section-subtitle fade-in"
+                style="color: var(--gold-light); margin: 1rem auto 3rem"
+              >
+                Soprano lírica con una trayectoria internacional. Su repertorio
+                abarca desde el bel canto italiano hasta la ópera contemporánea.
+              </p>
+              <a
+                href="#biography"
+                data-link="biography"
+                class="btn btn-outline fade-in"
+              >
+                Conocer más
+              </a>
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
 
-    <section class="section">
-      <div class="container bio-grid">
-        <div class="bio-photo fade-in">
-          <img src="/images/karla-portrait.jpg" alt="Karla Argueta" />
+        <div class="section">
+          <div class="container bio-grid">
+            <div class="bio-photo fade-in">
+              <img src="/images/karla-portrait.jpg" alt="Karla Argueta" />
+            </div>
+            <div class="bio-text fade-in">
+              <span class="eyebrow">Sobre la artista</span>
+              <h2>Una voz forjada en los grandes escenarios.</h2>
+              <p>
+                Karla Argueta ha desarrollado una carrera internacional en los
+                principales teatros de Europa y América, destacando por su
+                versatilidad y expresividad dramática.
+              </p>
+              <p>
+                Colabora regularmente con directores y compañías de primer
+                nivel, llevando el repertorio lírico a nuevas audiencias.
+              </p>
+              <a
+                href="#biography"
+                data-link="biography"
+                class="btn btn-primary"
+                style="margin-top: 1rem"
+              >
+                Leer biografía completa
+              </a>
+            </div>
+          </div>
         </div>
-        <div class="bio-text fade-in">
-          <span class="eyebrow">Sobre la artista</span>
-          <h2>Una voz forjada en los grandes escenarios.</h2>
-          <p>
-            Karla Argueta ha interpretado roles principales en La Scala de
-            Milán, el Teatro Real de Madrid, la Ópera de Viena y el Metropolitan
-            Opera de Nueva York.
-          </p>
-          <p>
-            Colabora regularmente con directores de la talla de Riccardo Muti,
-            Gustavo Dudamel y Zubin Mehta.
-          </p>
-          <a
-            href="biography.html"
-            class="btn btn-primary"
-            style="margin-top: 1rem;"
-          >
-            Leer biografía completa
-          </a>
-        </div>
-      </div>
-    </section>
 
-    <section class="section section-alt">
-      <div class="container">
-        <div style="text-align: center;">
-          <span class="eyebrow fade-in">Repertorio</span>
-          <h2
-            class="section-title fade-in"
-            style="color: var(--wine); font-style: italic;"
-          >
-            Roles destacados
-          </h2>
-          <p class="section-subtitle fade-in" style="margin: 1rem auto 4rem;">
-            Un repertorio que abarca tres siglos de ópera
-          </p>
-        </div>
-        <div class="roles-grid">
-          <div class="role-card fade-in" style="background: transparent;">
-            <div class="opera">La Traviata</div>
-            <h3 style="color: var(--wine);">Violetta Valéry</h3>
-            <div class="composer" style="color: var(--text-dim);">
-              Giuseppe Verdi
+        <div class="section section-alt">
+          <div class="container">
+            <div style="text-align: center">
+              <span class="eyebrow fade-in">Repertorio</span>
+              <h2
+                class="section-title fade-in"
+                style="color: var(--wine); font-style: italic"
+              >
+                Roles destacados
+              </h2>
+              <p
+                class="section-subtitle fade-in"
+                style="margin: 1rem auto 4rem"
+              >
+                Un repertorio que abarca tres siglos de ópera
+              </p>
             </div>
-          </div>
-          <div class="role-card fade-in" style="background: transparent;">
-            <div class="opera">Madama Butterfly</div>
-            <h3 style="color: var(--wine);">Cio-Cio San</h3>
-            <div class="composer" style="color: var(--text-dim);">
-              Giacomo Puccini
-            </div>
-          </div>
-          <div class="role-card fade-in" style="background: transparent;">
-            <div class="opera">Tosca</div>
-            <h3 style="color: var(--wine);">Floria Tosca</h3>
-            <div class="composer" style="color: var(--text-dim);">
-              Giacomo Puccini
-            </div>
-          </div>
-        </div>
-        <div style="text-align: center; margin-top: 3rem;">
-          <a
-            href="biography.html"
-            class="btn btn-outline"
-            style="color: var(--wine); border-color: var(--wine);"
-          >
-            Ver todos los roles
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div style="text-align: center;">
-          <span class="eyebrow fade-in">Próximas fechas</span>
-          <h2
-            class="section-title fade-in"
-            style="color: var(--wine); font-style: italic;"
-          >
-            En escena
-          </h2>
-        </div>
-        <div class="concert-list" style="margin-top: 3rem;">
-          <div class="concert-item fade-in">
-            <div class="concert-date">
-              <span class="day">15</span>
-              <span class="month">Mar</span>
-            </div>
-            <div class="concert-info">
-              <h3>Recital de Lieder — Schubert y Brahms</h3>
-              <div class="venue">Teatro Colón · Buenos Aires, Argentina</div>
-            </div>
-            <a href="concerts.html" class="btn btn-outline">Detalles</a>
-          </div>
-          <div class="concert-item fade-in">
-            <div class="concert-date">
-              <span class="day">02</span>
-              <span class="month">Abr</span>
-            </div>
-            <div class="concert-info">
-              <h3>La Traviata — Violetta</h3>
-              <div class="venue">Ópera de Viena · Viena, Austria</div>
-            </div>
-            <a href="concerts.html" class="btn btn-outline">Detalles</a>
-          </div>
-          <div class="concert-item fade-in">
-            <div class="concert-date">
-              <span class="day">21</span>
-              <span class="month">May</span>
-            </div>
-            <div class="concert-info">
-              <h3>Concierto de Gala — Arias y Dúos</h3>
-              <div class="venue">
-                Palacio de Bellas Artes · Ciudad de México
+            <div class="roles-grid">
+              <div class="role-card fade-in" style="background: transparent">
+                <div class="opera">La Traviata</div>
+                <h3 style="color: var(--wine)">Violetta Valéry</h3>
+                <div class="composer" style="color: var(--text-dim)">
+                  Giuseppe Verdi
+                </div>
+              </div>
+              <div class="role-card fade-in" style="background: transparent">
+                <div class="opera">Madama Butterfly</div>
+                <h3 style="color: var(--wine)">Cio-Cio San</h3>
+                <div class="composer" style="color: var(--text-dim)">
+                  Giacomo Puccini
+                </div>
+              </div>
+              <div class="role-card fade-in" style="background: transparent">
+                <div class="opera">Tosca</div>
+                <h3 style="color: var(--wine)">Floria Tosca</h3>
+                <div class="composer" style="color: var(--text-dim)">
+                  Giacomo Puccini
+                </div>
               </div>
             </div>
-            <a href="concerts.html" class="btn btn-outline">Detalles</a>
+            <div style="text-align: center; margin-top: 3rem">
+              <a
+                href="#biography"
+                data-link="biography"
+                class="btn btn-outline"
+                style="color: var(--wine); border-color: var(--wine)"
+              >
+                Ver todos los roles
+              </a>
+            </div>
           </div>
         </div>
-        <div style="text-align: center; margin-top: 3rem;">
-          <a href="concerts.html" class="btn btn-primary">
-            Ver calendario completo
-          </a>
+
+        <div class="section">
+          <div class="container">
+            <div style="text-align: center">
+              <span class="eyebrow fade-in">Próximas fechas</span>
+              <h2
+                class="section-title fade-in"
+                style="color: var(--wine); font-style: italic"
+              >
+                En escena
+              </h2>
+            </div>
+            <div class="concert-list" style="margin-top: 3rem">
+              <div class="concert-item fade-in">
+                <div class="concert-date">
+                  <span class="day">15</span>
+                  <span class="month">Mar</span>
+                </div>
+                <div class="concert-info">
+                  <h3>Recital de Lieder — Schubert y Brahms</h3>
+                  <div class="venue">
+                    Teatro Colón · Buenos Aires, Argentina
+                  </div>
+                </div>
+                <a
+                  href="#concerts"
+                  data-link="concerts"
+                  class="btn btn-outline"
+                >
+                  Detalles
+                </a>
+              </div>
+              <div class="concert-item fade-in">
+                <div class="concert-date">
+                  <span class="day">02</span>
+                  <span class="month">Abr</span>
+                </div>
+                <div class="concert-info">
+                  <h3>La Traviata — Violetta</h3>
+                  <div class="venue">Ópera de Viena · Viena, Austria</div>
+                </div>
+                <a
+                  href="#concerts"
+                  data-link="concerts"
+                  class="btn btn-outline"
+                >
+                  Detalles
+                </a>
+              </div>
+              <div class="concert-item fade-in">
+                <div class="concert-date">
+                  <span class="day">21</span>
+                  <span class="month">May</span>
+                </div>
+                <div class="concert-info">
+                  <h3>Concierto de Gala — Arias y Dúos</h3>
+                  <div class="venue">
+                    Palacio de Bellas Artes · Ciudad de México
+                  </div>
+                </div>
+                <a
+                  href="#concerts"
+                  data-link="concerts"
+                  class="btn btn-outline"
+                >
+                  Detalles
+                </a>
+              </div>
+            </div>
+            <div style="text-align: center; margin-top: 3rem">
+              <a href="#concerts" data-link="concerts" class="btn btn-primary">
+                Ver calendario completo
+              </a>
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
 
-    <section class="section section-dark">
-      <div class="container" style="text-align: center;">
-        <span class="eyebrow fade-in">Contacto</span>
-        <h2
-          class="section-title fade-in"
-          style="color: var(--cream); font-style: italic;"
-        >
-          Contrataciones y prensa
-        </h2>
-        <p
-          class="section-subtitle fade-in"
-          style="color: var(--gold-light); margin: 1rem auto 3rem;"
-        >
-          Para invitaciones, colaboraciones o solicitudes de prensa, por favor
-          contacte con representación.
-        </p>
-        <a href="contact.html" class="btn btn-primary fade-in">Contactar</a>
-      </div>
-    </section>
+        <div class="section section-dark">
+          <div class="container" style="text-align: center">
+            <span class="eyebrow fade-in">Contacto</span>
+            <h2
+              class="section-title fade-in"
+              style="color: var(--cream); font-style: italic"
+            >
+              Contrataciones y prensa
+            </h2>
+            <p
+              class="section-subtitle fade-in"
+              style="color: var(--gold-light); margin: 1rem auto 3rem"
+            >
+              Para invitaciones, colaboraciones o solicitudes de prensa, por
+              favor contacte directamente.
+            </p>
+            <a
+              href="#contact"
+              data-link="contact"
+              class="btn btn-primary fade-in"
+            >
+              Contactar
+            </a>
+          </div>
+        </div>
+      </section>
 
+      <!-- ============ PAGE: BIOGRAPHY ============ -->
+      <section class="page" id="biography">
+        <div class="page-hero">
+          <div class="page-hero-content">
+            <span class="eyebrow">Biografía</span>
+            <h1>Karla Argueta</h1>
+            <p class="page-subtitle">Soprano lírica · Ópera y recital</p>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="container bio-grid">
+            <div class="bio-photo fade-in">
+              <img src="/images/karla-bio.jpg" alt="Karla Argueta" />
+            </div>
+            <div class="bio-text fade-in">
+              <span class="eyebrow">Trayectoria</span>
+              <h2>Una vida dedicada al bel canto.</h2>
+              <p>
+                <strong>Karla Argueta</strong>
+                inició su formación musical en 2008 en la Escuela Municipal de
+                Música de Guatemala y estudió canto lírico con el maestro
+                italiano Massimo Pezzutti desde 2014. Ha integrado diversos
+                coros, como el Coro Municipal Infantil, el Coro Femenino
+                Kenosis, el Coro Universitario USAC y el Coro Mundial de Jóvenes
+                de la JMJ en Panamá (2019). Desde 2017 formó parte de la
+                compañía de ópera guatemalteca "Querido Arte", participando en
+                producciones como "Elixir de Amor", "La Boheme" y "La Traviata".
+              </p>
+              <p>
+                En 2020 recibió una beca de la Embajada de Rusia en Guatemala
+                para estudiar Canto académico en la Universidad Estatal del
+                Suroeste en Kursk, donde obtuvo su licenciatura en Artes vocales
+                con especialización en pedagogía musical. Ha recibido clases
+                magistrales de reconocidos maestros y cantantes como Adriana
+                Gonzales, Katherine Colmenares, Margot Pares Reyna, Pamela
+                Morales y Mario Chang.
+              </p>
+              <p>
+                Entre sus logros destacan el Gran Prix del concurso "Orgullo de
+                la Tierra del Ruiseñor", el primer lugar en el Festival "Sonidos
+                de Dutar" de Moscú y el tercer lugar en el IX Concurso
+                Internacional "Mundo de la Música". En 2023 representó a
+                Guatemala en el Foro Internacional de Cultura en San Petersburgo
+                y en 2024 fue delegada en el Festival Mundial de la Juventud y
+                el Foro «Eurasia Global». En 2025 recibió una beca para su
+                maestría en el Conservatorio Rimsky-Korsakov de San Petersburgo.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="section section-alt">
+          <div class="container">
+            <span class="eyebrow fade-in">Repertorio</span>
+            <h2
+              class="section-title fade-in"
+              style="color: var(--wine); font-style: italic"
+            >
+              Roles principales
+            </h2>
+            <p class="section-subtitle fade-in">
+              Un recorrido por los personajes que ha dado vida en escena
+            </p>
+
+            <div style="max-width: 900px; margin: 0 auto">
+              <div
+                style="padding: 2rem 0; border-bottom: 1px solid rgba(201, 169, 97, 0.3)"
+                class="fade-in"
+              >
+                <h3
+                  style="color: var(--wine); font-style: italic; margin-bottom: 0.5rem"
+                >
+                  Violetta Valéry
+                </h3>
+                <p
+                  style="color: var(--text-dim); font-family: var(--serif); font-style: italic"
+                >
+                  La Traviata — Giuseppe Verdi
+                </p>
+              </div>
+              <div
+                style="padding: 2rem 0; border-bottom: 1px solid rgba(201, 169, 97, 0.3)"
+                class="fade-in"
+              >
+                <h3
+                  style="color: var(--wine); font-style: italic; margin-bottom: 0.5rem"
+                >
+                  Cio-Cio San
+                </h3>
+                <p
+                  style="color: var(--text-dim); font-family: var(--serif); font-style: italic"
+                >
+                  Madama Butterfly — Giacomo Puccini
+                </p>
+              </div>
+              <div
+                style="padding: 2rem 0; border-bottom: 1px solid rgba(201, 169, 97, 0.3)"
+                class="fade-in"
+              >
+                <h3
+                  style="color: var(--wine); font-style: italic; margin-bottom: 0.5rem"
+                >
+                  Floria Tosca
+                </h3>
+                <p
+                  style="color: var(--text-dim); font-family: var(--serif); font-style: italic"
+                >
+                  Tosca — Giacomo Puccini
+                </p>
+              </div>
+              <div
+                style="padding: 2rem 0; border-bottom: 1px solid rgba(201, 169, 97, 0.3)"
+                class="fade-in"
+              >
+                <h3
+                  style="color: var(--wine); font-style: italic; margin-bottom: 0.5rem"
+                >
+                  Donna Anna
+                </h3>
+                <p
+                  style="color: var(--text-dim); font-family: var(--serif); font-style: italic"
+                >
+                  Don Giovanni — W. A. Mozart
+                </p>
+              </div>
+              <div
+                style="padding: 2rem 0; border-bottom: 1px solid rgba(201, 169, 97, 0.3)"
+                class="fade-in"
+              >
+                <h3
+                  style="color: var(--wine); font-style: italic; margin-bottom: 0.5rem"
+                >
+                  Micaëla
+                </h3>
+                <p
+                  style="color: var(--text-dim); font-family: var(--serif); font-style: italic"
+                >
+                  Carmen — Georges Bizet
+                </p>
+              </div>
+              <div style="padding: 2rem 0" class="fade-in">
+                <h3
+                  style="color: var(--wine); font-style: italic; margin-bottom: 0.5rem"
+                >
+                  Gilda
+                </h3>
+                <p
+                  style="color: var(--text-dim); font-family: var(--serif); font-style: italic"
+                >
+                  Rigoletto — Giuseppe Verdi
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section section-dark">
+          <div class="container" style="text-align: center">
+            <span class="eyebrow fade-in">Reconocimientos</span>
+            <h2
+              class="section-title fade-in"
+              style="color: var(--cream); font-style: italic"
+            >
+              Premios y distinciones
+            </h2>
+            <div
+              style="max-width: 700px; margin: 3rem auto 0; text-align: left"
+            >
+              <div
+                style="padding: 1.5rem 0; border-bottom: 1px solid rgba(201, 169, 97, 0.2)"
+                class="fade-in"
+              >
+                <p style="color: var(--cream)">
+                  <span
+                    class="gold"
+                    style="font-family: var(--serif); font-size: 1.3rem"
+                  >
+                    2025
+                  </span>
+                  — Beca para maestría en el Conservatorio Rimsky-Korsakov
+                </p>
+              </div>
+              <div
+                style="padding: 1.5rem 0; border-bottom: 1px solid rgba(201, 169, 97, 0.2)"
+                class="fade-in"
+              >
+                <p style="color: var(--cream)">
+                  <span
+                    class="gold"
+                    style="font-family: var(--serif); font-size: 1.3rem"
+                  >
+                    2024
+                  </span>
+                  — Delegada en el Festival Mundial de la Juventud (Rusia)
+                </p>
+              </div>
+              <div
+                style="padding: 1.5rem 0; border-bottom: 1px solid rgba(201, 169, 97, 0.2)"
+                class="fade-in"
+              >
+                <p style="color: var(--cream)">
+                  <span
+                    class="gold"
+                    style="font-family: var(--serif); font-size: 1.3rem"
+                  >
+                    2023
+                  </span>
+                  — Representante de Guatemala en el Foro Internacional de
+                  Cultura (San Petersburgo)
+                </p>
+              </div>
+              <div style="padding: 1.5rem 0" class="fade-in">
+                <p style="color: var(--cream)">
+                  <span
+                    class="gold"
+                    style="font-family: var(--serif); font-size: 1.3rem"
+                  >
+                    2020
+                  </span>
+                  — Beca de la Embajada de Rusia en Guatemala para estudios en
+                  Kursk
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ PAGE: GALLERY ============ -->
+      <section class="page" id="gallery">
+        <div class="page-hero">
+          <div class="page-hero-content">
+            <span class="eyebrow">Galería</span>
+            <h1>Momentos en escena</h1>
+            <p class="page-subtitle">
+              Una selección visual de producciones, recitales y ensayos
+            </p>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="container">
+            <div class="gallery-grid">
+              <div class="gallery-item fade-in">
+                <img
+                  src="/images/gallery/gallery-01.jpg"
+                  alt="Producción de La Traviata"
+                />
+              </div>
+              <div class="gallery-item fade-in">
+                <img
+                  src="/images/gallery/gallery-02.jpg"
+                  alt="Recital en el Teatro Colón"
+                />
+              </div>
+              <div class="gallery-item fade-in">
+                <img
+                  src="/images/gallery/gallery-03.jpg"
+                  alt="Ensayo con orquesta"
+                />
+              </div>
+              <div class="gallery-item fade-in">
+                <img src="/images/gallery/gallery-04.jpg" alt="Backstage" />
+              </div>
+              <div class="gallery-item fade-in">
+                <img
+                  src="/images/gallery/gallery-05.jpg"
+                  alt="Madama Butterfly"
+                />
+              </div>
+              <div class="gallery-item fade-in">
+                <img
+                  src="/images/gallery/gallery-06.jpg"
+                  alt="Concierto de gala"
+                />
+              </div>
+              <div class="gallery-item fade-in">
+                <img
+                  src="/images/gallery/gallery-07.jpg"
+                  alt="Retrato de estudio"
+                />
+              </div>
+              <div class="gallery-item fade-in">
+                <img
+                  src="/images/gallery/gallery-08.jpg"
+                  alt="Ensayos generales"
+                />
+              </div>
+              <div class="gallery-item fade-in">
+                <img
+                  src="/images/gallery/gallery-09.jpg"
+                  alt="Función en Viena"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ PAGE: CONCERTS ============ -->
+      <section class="page" id="concerts">
+        <div class="page-hero">
+          <div class="page-hero-content">
+            <span class="eyebrow">Próximas fechas</span>
+            <h1>Temporada 2026</h1>
+            <p class="page-subtitle">
+              Próximas presentaciones en escenarios internacionales
+            </p>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="container">
+            <span class="eyebrow fade-in">Próximos conciertos</span>
+            <h2
+              class="section-title fade-in"
+              style="color: var(--wine); font-style: italic"
+            >
+              En escena
+            </h2>
+
+            <div class="concert-list" style="margin-top: 3rem">
+              <div class="concert-item fade-in">
+                <div class="concert-date">
+                  <span class="day">15</span>
+                  <span class="month">Mar</span>
+                </div>
+                <div class="concert-info">
+                  <h3>Recital de Lieder — Schubert y Brahms</h3>
+                  <div class="venue">
+                    Teatro Colón · Buenos Aires, Argentina
+                  </div>
+                </div>
+                <a href="#" class="btn btn-primary">Entradas</a>
+              </div>
+              <div class="concert-item fade-in">
+                <div class="concert-date">
+                  <span class="day">02</span>
+                  <span class="month">Abr</span>
+                </div>
+                <div class="concert-info">
+                  <h3>La Traviata — Violetta</h3>
+                  <div class="venue">Ópera de Viena · Viena, Austria</div>
+                </div>
+                <a href="#" class="btn btn-primary">Entradas</a>
+              </div>
+              <div class="concert-item fade-in">
+                <div class="concert-date">
+                  <span class="day">21</span>
+                  <span class="month">May</span>
+                </div>
+                <div class="concert-info">
+                  <h3>Concierto de Gala — Arias y Dúos</h3>
+                  <div class="venue">
+                    Palacio de Bellas Artes · Ciudad de México
+                  </div>
+                </div>
+                <a href="#" class="btn btn-primary">Entradas</a>
+              </div>
+              <div class="concert-item fade-in">
+                <div class="concert-date">
+                  <span class="day">08</span>
+                  <span class="month">Jun</span>
+                </div>
+                <div class="concert-info">
+                  <h3>Tosca — Floria Tosca</h3>
+                  <div class="venue">Teatro alla Scala · Milán, Italia</div>
+                </div>
+                <a href="#" class="btn btn-primary">Entradas</a>
+              </div>
+              <div class="concert-item fade-in">
+                <div class="concert-date">
+                  <span class="day">12</span>
+                  <span class="month">Jul</span>
+                </div>
+                <div class="concert-info">
+                  <h3>Madama Butterfly — Cio-Cio San</h3>
+                  <div class="venue">
+                    Royal Opera House · Londres, Reino Unido
+                  </div>
+                </div>
+                <a href="#" class="btn btn-primary">Entradas</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section section-alt">
+          <div class="container">
+            <span class="eyebrow fade-in">Archivo</span>
+            <h2
+              class="section-title fade-in"
+              style="color: var(--wine); font-style: italic"
+            >
+              Temporadas anteriores
+            </h2>
+
+            <div style="max-width: 900px; margin-top: 3rem">
+              <div
+                style="padding: 2rem 0; border-bottom: 1px solid rgba(201, 169, 97, 0.3)"
+                class="fade-in"
+              >
+                <span
+                  class="gold"
+                  style="font-family: var(--serif); font-size: 1.5rem; font-style: italic"
+                >
+                  2025
+                </span>
+                <p style="color: var(--text-dim); margin-top: 0.5rem">
+                  Gira por Sudamérica — 12 conciertos en 6 países
+                </p>
+              </div>
+              <div
+                style="padding: 2rem 0; border-bottom: 1px solid rgba(201, 169, 97, 0.3)"
+                class="fade-in"
+              >
+                <span
+                  class="gold"
+                  style="font-family: var(--serif); font-size: 1.5rem; font-style: italic"
+                >
+                  2024
+                </span>
+                <p style="color: var(--text-dim); margin-top: 0.5rem">
+                  Debut en el Metropolitan Opera de Nueva York
+                </p>
+              </div>
+              <div style="padding: 2rem 0" class="fade-in">
+                <span
+                  class="gold"
+                  style="font-family: var(--serif); font-size: 1.5rem; font-style: italic"
+                >
+                  2023
+                </span>
+                <p style="color: var(--text-dim); margin-top: 0.5rem">
+                  Residencia artística en la Ópera de Viena
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ PAGE: PRESS ============ -->
+      <section class="page" id="press">
+        <div class="page-hero">
+          <div class="page-hero-content">
+            <span class="eyebrow">Prensa</span>
+            <h1>Lo que dice la crítica</h1>
+            <p class="page-subtitle">
+              Reseñas, entrevistas y cobertura mediática
+            </p>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="container">
+            <span class="eyebrow fade-in">Reseñas destacadas</span>
+            <h2
+              class="section-title fade-in"
+              style="color: var(--wine); font-style: italic"
+            >
+              En los medios
+            </h2>
+
+            <div class="press-list" style="margin-top: 3rem">
+              <article class="press-item fade-in">
+                <div class="press-meta">
+                  <span class="press-outlet">The New York Times</span>
+                  <span class="press-date">Marzo 2025</span>
+                </div>
+                <h3>
+                  "Una Violetta de época: Karla Argueta conquista el Met."
+                </h3>
+                <p class="press-excerpt">
+                  "La soprano demostró un dominio vocal y dramático que rara vez
+                  se ve en los escenarios actuales. Su 'Addio del passato' dejó
+                  al público en silencio absoluto."
+                </p>
+                <a href="#" class="press-link">Leer reseña completa</a>
+              </article>
+
+              <article class="press-item fade-in">
+                <div class="press-meta">
+                  <span class="press-outlet">Opera Magazine</span>
+                  <span class="press-date">Enero 2025</span>
+                </div>
+                <h3>"La heredera de la gran tradición del bel canto."</h3>
+                <p class="press-excerpt">
+                  "Argueta posee una línea de canto impecable y una sensibilidad
+                  musical que la colocan en la primera línea de las sopranos
+                  líricas de su generación."
+                </p>
+                <a href="#" class="press-link">Leer reseña completa</a>
+              </article>
+
+              <article class="press-item fade-in">
+                <div class="press-meta">
+                  <span class="press-outlet">El País</span>
+                  <span class="press-date">Noviembre 2024</span>
+                </div>
+                <h3>"Karla Argueta: la voz que emociona sin artificios."</h3>
+                <p class="press-excerpt">
+                  "En tiempos de excesos escénicos, Argueta apuesta por la
+                  pureza vocal y la verdad dramática. Y gana."
+                </p>
+                <a href="#" class="press-link">Leer reseña completa</a>
+              </article>
+
+              <article class="press-item fade-in">
+                <div class="press-meta">
+                  <span class="press-outlet">Financial Times</span>
+                  <span class="press-date">Octubre 2024</span>
+                </div>
+                <h3>
+                  "Un recital de referencia: Schubert en manos de Argueta."
+                </h3>
+                <p class="press-excerpt">
+                  "Su lectura de los lieder de Schubert es de una intimidad y
+                  una inteligencia poco comunes. Un recital para el recuerdo."
+                </p>
+                <a href="#" class="press-link">Leer reseña completa</a>
+              </article>
+            </div>
+          </div>
+        </div>
+
+        <div class="section section-alt">
+          <div class="container">
+            <span class="eyebrow fade-in">Entrevistas</span>
+            <h2
+              class="section-title fade-in"
+              style="color: var(--wine); font-style: italic"
+            >
+              En conversación
+            </h2>
+
+            <div class="press-list" style="margin-top: 3rem">
+              <article
+                class="press-item fade-in"
+                style="border-color: rgba(201, 169, 97, 0.5)"
+              >
+                <div class="press-meta">
+                  <span class="press-outlet">BBC Radio 3</span>
+                  <span class="press-date">Febrero 2025</span>
+                </div>
+                <h3>"Conversación sobre el arte del bel canto"</h3>
+                <p class="press-excerpt">
+                  Entrevista en profundidad sobre su aproximación al repertorio
+                  italiano y su visión de la ópera contemporánea.
+                </p>
+                <a href="#" class="press-link">Escuchar entrevista</a>
+              </article>
+
+              <article
+                class="press-item fade-in"
+                style="border-color: rgba(201, 169, 97, 0.5)"
+              >
+                <div class="press-meta">
+                  <span class="press-outlet">Gramophone</span>
+                  <span class="press-date">Diciembre 2024</span>
+                </div>
+                <h3>"Karla Argueta: entre la tradición y la modernidad"</h3>
+                <p class="press-excerpt">
+                  La soprano reflexiona sobre su carrera, sus influencias y los
+                  desafíos del repertorio operístico actual.
+                </p>
+                <a href="#" class="press-link">Leer entrevista</a>
+              </article>
+            </div>
+          </div>
+        </div>
+
+        <div class="section section-dark">
+          <div class="container" style="text-align: center">
+            <span class="eyebrow fade-in">Kit de prensa</span>
+            <h2
+              class="section-title fade-in"
+              style="color: var(--cream); font-style: italic"
+            >
+              Recursos para medios
+            </h2>
+            <p
+              class="section-subtitle fade-in"
+              style="color: var(--gold-light); margin: 1rem auto 3rem"
+            >
+              Fotografías de alta resolución, biografía oficial y material
+              promocional
+            </p>
+            <a
+              href="#contact"
+              data-link="contact"
+              class="btn btn-primary fade-in"
+            >
+              Solicitar kit de prensa
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ PAGE: CONTACT ============ -->
+      <section class="page" id="contact">
+        <div class="page-hero">
+          <div class="page-hero-content">
+            <span class="eyebrow">Contacto</span>
+            <h1>Contrataciones y prensa</h1>
+            <p class="page-subtitle">
+              Para invitaciones, colaboraciones y solicitudes profesionales
+            </p>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="container contact-grid">
+            <div class="contact-info fade-in">
+              <h3>Información de contacto</h3>
+              <p>
+                Para invitaciones, colaboraciones o solicitudes de prensa, por
+                favor contacte directamente.
+              </p>
+              <ul class="contact-list">
+                <li>
+                  <i class="fas fa-envelope"></i>
+                  <div>
+                    <strong>Correo electrónico</strong>
+                    <span>karlacontactogt@gmail.com</span>
+                  </div>
+                </li>
+                <li>
+                  <i class="fas fa-phone"></i>
+                  <div>
+                    <strong>Teléfono</strong>
+                    <span>+7 905 04 15 881</span>
+                  </div>
+                </li>
+                <li>
+                  <i class="fas fa-map-marker-alt"></i>
+                  <div>
+                    <strong>Base</strong>
+                    <span>San Petersburgo, Rusia</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <form class="contact-form fade-in" id="contactForm" novalidate>
+              <div class="form-group">
+                <label for="name">Nombre completo</label>
+                <input type="text" id="name" name="name" required />
+              </div>
+              <div class="form-group">
+                <label for="email">Correo electrónico</label>
+                <input type="email" id="email" name="email" required />
+              </div>
+              <div class="form-group">
+                <label for="message">Mensaje</label>
+                <textarea id="message" name="message" required></textarea>
+              </div>
+              <button
+                type="submit"
+                class="btn btn-primary"
+                style="width: 100%; text-align: center"
+              >
+                <i class="fas fa-paper-plane"></i>
+                Enviar mensaje
+              </button>
+              <div class="form-status" id="formStatus"></div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ============ IMAGE MODAL ============ -->
+    <div class="modal" id="imageModal">
+      <div class="modal-content-image">
+        <button class="modal-close" id="imageModalClose" aria-label="Cerrar">
+          <i class="fas fa-times"></i>
+        </button>
+        <img id="modalImage" src="" alt="" />
+      </div>
+    </div>
+
+    <!-- ============ FOOTER ============ -->
     <footer class="footer">
       <div class="container">
         <div class="footer-grid">
           <div class="footer-brand">
-            <a href="index.html" class="logo">
+            <a href="#home" data-link="home" class="logo">
               KARLA
               <span>ARGUETA</span>
             </a>
@@ -269,20 +996,20 @@
           <div>
             <h4>Navegación</h4>
             <ul class="footer-links">
-              <li><a href="index.html">Inicio</a></li>
-              <li><a href="biography.html">Biografía</a></li>
-              <li><a href="gallery.html">Galería</a></li>
-              <li><a href="concerts.html">Conciertos</a></li>
+              <li><a href="#home" data-link="home">Inicio</a></li>
+              <li><a href="#biography" data-link="biography">Biografía</a></li>
+              <li><a href="#gallery" data-link="gallery">Galería</a></li>
+              <li><a href="#concerts" data-link="concerts">Conciertos</a></li>
             </ul>
           </div>
           <div>
             <h4>Contacto</h4>
             <ul class="footer-links">
-              <li><a href="press.html">Prensa</a></li>
-              <li><a href="contact.html">Contacto</a></li>
+              <li><a href="#press" data-link="press">Prensa</a></li>
+              <li><a href="#contact" data-link="contact">Contacto</a></li>
               <li>
-                <a href="mailto:contacto@KARLAARGUETA.com">
-                  contacto@KARLAARGUETA.com
+                <a href="mailto:karlacontactogt@gmail.com">
+                  karlacontactogt@gmail.com
                 </a>
               </li>
             </ul>

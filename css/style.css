@@ -820,3 +820,35 @@ Contact ---------- */
     text-align: center;
   }
 }
+
+/* ---------- Page Routing ---------- */
+.page {
+  display: none;
+  padding-top: 80px;
+  min-height: 100vh;
+}
+
+.page.active {
+  display: block;
+  animation: pageFade 0.5s ease;
+}
+
+@keyframes pageFade {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Full-height heroes don't need the top padding */
+.page#home {
+  padding-top: 0;
+}
+
+.page#home .hero {
+  padding-top: 6rem;
+}

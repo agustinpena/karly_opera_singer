@@ -14,12 +14,6 @@ if (hamburger && nav) {
     hamburger.classList.toggle("open");
     nav.classList.toggle("open");
   });
-  nav.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      hamburger.classList.remove("open");
-      nav.classList.remove("open");
-    });
-  });
 }
 
 /* ---------- Fade-in on Scroll ---------- */
@@ -42,6 +36,37 @@ function initFadeObserver() {
     .forEach((el) => fadeObserver.observe(el));
 }
 initFadeObserver();
+
+/* ---------- Page Routing ---------- */
+const pages = document.querySelectorAll(".page");
+const navLinks = document.querySelectorAll("[data-link]");
+
+function navigateTo(pageId) {
+  pages.forEach((p) => p.classList.toggle("active", p.id === pageId));
+  document.querySelectorAll(".nav a").forEach((a) => {
+    a.classList.toggle("active", a.dataset.link === pageId);
+  });
+  window.scrollTo({ top: 0, behavior: "instant" });
+  if (nav) nav.classList.remove("open");
+  if (hamburger) hamburger.classList.remove("open");
+  setTimeout(initFadeObserver, 50);
+}
+
+navLinks.forEach((link) => {
+  link.addEventListener("click", (e) => {
+    e.preventDefault();
+    const target = link.dataset.link;
+    if (target) {
+      history.pushState({ page: target }, "", `#${target}`);
+      navigateTo(target);
+    }
+  });
+});
+
+window.addEventListener("popstate", () => {
+  const hash = location.hash.replace("#", "") || "home";
+  navigateTo(hash);
+});
 
 /* ---------- Gallery Modal ---------- */
 const imageModal = document.getElementById("imageModal");
@@ -141,3 +166,7 @@ if (form) {
     }
   });
 }
+
+/* ---------- Init ---------- */
+const initialHash = location.hash.replace("#", "") || "home";
+if (initialHash !== "home") navigateTo(initialHash);
