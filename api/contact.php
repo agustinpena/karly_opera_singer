@@ -37,17 +37,17 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     exit;
 }
 
-$to = 'contacto@isabellamoretti.com'; // CHANGE: Client's email
-$subject = 'Nuevo mensaje desde el sitio web | Isabella Moretti';
+$to = 'karlacontactogt@gmail.com'; // CHANGE: Client's email
+$subject = 'Nuevo mensaje desde el sitio web | Karla Argueta';
 
 $body = "Nuevo mensaje desde el formulario de contacto:\n\n";
 $body .= "Nombre: $name\n";
 $body .= "Email: $email\n";
 $body .= "Mensaje:\n$message\n\n";
 $body .= "---\n";
-$body .= "Enviado desde el sitio web de Isabella Moretti";
+$body .= "Enviado desde el sitio web de Karla Argueta";
 
-$headers = "From: sitio@isabellamoretti.com\r\n";
+$headers = "From: sitio@arguetakarla.com\r\n";
 $headers .= "Reply-To: $email\r\n";
 $headers .= "Content-Type: text/plain; charset=utf-8\r\n";
 
