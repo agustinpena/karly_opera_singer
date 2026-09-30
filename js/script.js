@@ -1,3 +1,142 @@
+/* ---------- Load dynamic content ---------- */
+async function fetchJSON(url) {
+  try {
+    const r = await fetch(url);
+    if (!r.ok) return [];
+    return await r.json();
+  } catch (e) {
+    return [];
+  }
+}
+
+async function renderDynamicConcerts() {
+  const homeList = document.getElementById("homeConcertList");
+  const fullList = document.getElementById("concertList");
+  const items = await fetchJSON("/api/concerts-admin.php");
+
+  if (!items.length) {
+    const emptyMsg =
+      '<div class="empty-state" style="text-align:center;padding:2rem;color:var(--text-dim);font-style:italic;">Próximamente.</div>';
+    if (homeList) homeList.innerHTML = emptyMsg;
+    if (fullList) fullList.innerHTML = emptyMsg;
+    return;
+  }
+
+  // Home shows only the first 3
+  if (homeList) {
+    homeList.innerHTML = items
+      .slice(0, 3)
+      .map(
+        (c) => `
+      <div class="concert-item fade-in">
+        <div class="concert-date">
+          <span class="day">${c.day}</span>
+          <span class="month">${c.month}</span>
+        </div>
+        <div class="concert-info">
+          <h3>${c.title}</h3>
+          <div class="venue">${c.venue} · ${c.city}</div>
+        </div>
+        <a href="#concerts" data-link="concerts" class="btn btn-outline">Detalles</a>
+      </div>
+    `,
+      )
+      .join("");
+  }
+
+  // Full list shows all
+  if (fullList) {
+    fullList.innerHTML = items
+      .map(
+        (c) => `
+      <div class="concert-item fade-in">
+        <div class="concert-date">
+          <span class="day">${c.day}</span>
+          <span class="month">${c.month}</span>
+        </div>
+        <div class="concert-info">
+          <h3>${c.title}</h3>
+          <div class="venue">${c.venue} · ${c.city}</div>
+        </div>
+        <a href="${c.link || "#"}" class="btn btn-primary" target="_blank" rel="noopener">Entradas</a>
+      </div>
+    `,
+      )
+      .join("");
+  }
+
+  // Re-attach navigation links in the home list
+  if (homeList) {
+    homeList.querySelectorAll("[data-link]").forEach((link) => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        const target = link.dataset.link;
+        if (target) {
+          history.pushState({ page: target }, "", `#${target}`);
+          navigateTo(target);
+        }
+      });
+    });
+  }
+
+  setTimeout(initFadeObserver, 100);
+}
+
+async function renderDynamicPress() {
+  const list = document.getElementById("pressList");
+  if (!list) return;
+  const items = await fetchJSON("/api/press-admin.php");
+  if (!items.length) {
+    list.innerHTML =
+      '<div class="empty-state" style="text-align:center;padding:2rem;color:var(--text-dim);font-style:italic;">Próximamente.</div>';
+    return;
+  }
+  list.innerHTML = items
+    .map(
+      (p) => `
+    <article class="press-item fade-in">
+      <div class="press-meta">
+        <span class="press-outlet">${p.outlet}</span>
+        <span class="press-date">${p.date}</span>
+      </div>
+      <h3>"${p.title}"</h3>
+      <p class="press-excerpt">${p.excerpt}</p>
+      ${p.author ? `<p class="press-excerpt"><em>${p.author}</em></p>` : ""}
+      ${p.link ? `<a href="${p.link}" target="_blank" rel="noopener" class="press-link">${p.linkText || "Leer más"}</a>` : ""}
+    </article>
+  `,
+    )
+    .join("");
+  setTimeout(initFadeObserver, 100);
+}
+
+async function renderDynamicGallery() {
+  const grid = document.getElementById("galleryGrid");
+  if (!grid) return;
+  const items = await fetchJSON("/api/gallery-admin.php");
+  if (!items.length) {
+    grid.innerHTML =
+      '<div class="empty-state" style="grid-column:1/-1;text-align:center;padding:2rem;color:var(--text-dim);font-style:italic;">Próximamente.</div>';
+    return;
+  }
+  grid.innerHTML = items
+    .map(
+      (src, i) => `
+    <div class="gallery-item fade-in">
+      <img src="${src}" alt="Galería ${i + 1}" loading="lazy" />
+    </div>
+  `,
+    )
+    .join("");
+  grid.querySelectorAll(".gallery-item").forEach((item) => {
+    item.addEventListener("click", function () {
+      const img = this.querySelector("img");
+      if (img) openImageModal(img.src, img.alt);
+    });
+  });
+  setTimeout(initFadeObserver, 100);
+}
+
 /* ---------- Header scroll ---------- */
 const header = document.getElementById("header");
 if (header) {
@@ -99,13 +238,6 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") closeImageModal();
 });
 
-document.querySelectorAll(".gallery-item").forEach((item) => {
-  item.addEventListener("click", function () {
-    const img = this.querySelector("img");
-    if (img) openImageModal(img.src, img.alt);
-  });
-});
-
 /* ---------- Contact form ---------- */
 const form = document.getElementById("contactForm");
 const formStatus = document.getElementById("formStatus");
@@ -168,5 +300,9 @@ if (form) {
 }
 
 /* ---------- Init ---------- */
+renderDynamicConcerts();
+renderDynamicPress();
+renderDynamicGallery();
+
 const initialHash = location.hash.replace("#", "") || "home";
 if (initialHash !== "home") navigateTo(initialHash);

@@ -1,0 +1,1079 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Panel de Administración — Karla Argueta</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --wine: #4a0f1e;
+        --wine-dark: #2d0812;
+        --gold: #c9a961;
+        --gold-light: #e0c88a;
+        --cream: #f5f1e8;
+        --cream-alt: #ede8dc;
+        --text: #2a1418;
+        --text-dim: #6b5a5e;
+        --danger: #a93226;
+        --serif: "Cormorant Garamond", Georgia, serif;
+        --sans: "Montserrat", sans-serif;
+        --transition: 0.3s cubic-bezier(0.2, 0.7, 0.2, 1);
+      }
+
+      body {
+        font-family: var(--sans);
+        color: var(--text);
+        background: var(--cream);
+        line-height: 1.6;
+        font-weight: 400;
+        padding: 2rem 1rem;
+        min-height: 100vh;
+      }
+
+      .container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 1rem;
+      }
+
+      .eyebrow {
+        font-size: 0.75rem;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 0.5rem;
+        display: inline-block;
+      }
+
+      h1 {
+        font-family: var(--serif);
+        font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+        font-weight: 500;
+        margin-bottom: 1rem;
+      }
+      h2 {
+        font-family: var(--serif);
+        font-size: 1.5rem;
+        font-weight: 500;
+        margin-bottom: 1rem;
+      }
+      h3 {
+        font-family: var(--serif);
+        font-size: 1.2rem;
+        font-weight: 500;
+        margin-bottom: 1rem;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.8rem 1.5rem;
+        font-family: var(--sans);
+        font-size: 0.78rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        transition: all var(--transition);
+        border: 1px solid var(--gold);
+        cursor: pointer;
+        text-decoration: none;
+      }
+      .btn-primary {
+        background: var(--gold);
+        color: var(--wine-dark);
+      }
+      .btn-primary:hover {
+        background: transparent;
+        color: var(--gold);
+      }
+      .btn-outline {
+        color: var(--gold);
+        background: transparent;
+      }
+      .btn-outline:hover {
+        background: var(--gold);
+        color: var(--wine-dark);
+      }
+      .btn-danger {
+        background: var(--danger);
+        color: #fff;
+        border-color: var(--danger);
+      }
+      .btn-danger:hover {
+        background: transparent;
+        color: var(--danger);
+      }
+      .btn-sm {
+        padding: 0.5rem 1rem;
+        font-size: 0.7rem;
+        letter-spacing: 2px;
+      }
+
+      .form-group {
+        margin-bottom: 1.2rem;
+      }
+      .form-group label {
+        display: block;
+        font-size: 0.72rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--wine);
+        margin-bottom: 0.4rem;
+        font-weight: 500;
+      }
+      .form-group input,
+      .form-group textarea,
+      .form-group select {
+        width: 100%;
+        padding: 0.8rem 1rem;
+        background: #fff;
+        border: 1px solid rgba(201, 169, 97, 0.4);
+        color: var(--text);
+        font-family: var(--sans);
+        font-size: 0.95rem;
+        transition: border-color var(--transition);
+      }
+      .form-group input:focus,
+      .form-group textarea:focus,
+      .form-group select:focus {
+        outline: none;
+        border-color: var(--gold);
+      }
+      .form-group textarea {
+        resize: vertical;
+        min-height: 100px;
+      }
+
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
+
+      .form-status {
+        margin-top: 1rem;
+        padding: 0.9rem 1rem;
+        font-size: 0.9rem;
+        display: none;
+      }
+      .form-status.success {
+        display: block;
+        background: rgba(201, 169, 97, 0.1);
+        color: var(--wine);
+        border: 1px solid var(--gold);
+      }
+      .form-status.error {
+        display: block;
+        background: rgba(200, 60, 60, 0.1);
+        color: var(--danger);
+        border: 1px solid var(--danger);
+      }
+      .form-status.uploading {
+        display: block;
+        background: #fff8e1;
+        color: #8a6d3b;
+        border: 1px solid #f0c36d;
+      }
+
+      .admin-login {
+        max-width: 450px;
+        margin: 3rem auto;
+        text-align: center;
+      }
+      .admin-login-form {
+        background: #fff;
+        padding: 2.5rem;
+        border: 1px solid rgba(201, 169, 97, 0.4);
+        margin-top: 1.5rem;
+        text-align: left;
+      }
+      .password-hint {
+        font-size: 0.8rem;
+        color: var(--text-dim);
+        margin-top: 0.6rem;
+      }
+
+      .admin-panel {
+        display: none;
+      }
+
+      .admin-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .admin-tabs {
+        display: flex;
+        gap: 0.3rem;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+        border-bottom: 1px solid rgba(201, 169, 97, 0.3);
+        padding-bottom: 0.5rem;
+      }
+      .admin-tab {
+        padding: 0.7rem 1.3rem;
+        color: var(--text-dim);
+        cursor: pointer;
+        border-radius: 4px 4px 0 0;
+        transition: all var(--transition);
+        font-size: 0.8rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-weight: 500;
+        border-bottom: 2px solid transparent;
+      }
+      .admin-tab:hover {
+        color: var(--text);
+        background: rgba(255, 255, 255, 0.5);
+      }
+      .admin-tab.active {
+        color: var(--wine);
+        border-bottom-color: var(--gold);
+        background: #fff;
+      }
+
+      .tab-content {
+        display: none;
+      }
+      .tab-content.active {
+        display: block;
+      }
+
+      .admin-item {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 1.5rem;
+        padding: 1.2rem 1.5rem;
+        background: #fff;
+        border: 1px solid rgba(201, 169, 97, 0.3);
+        border-left: 3px solid var(--gold);
+        margin-bottom: 1rem;
+        align-items: center;
+      }
+      .admin-item h4 {
+        font-size: 1rem;
+        margin-bottom: 0.3rem;
+        color: var(--wine);
+        font-family: var(--serif);
+      }
+      .admin-item .item-preview {
+        color: var(--text-dim);
+        font-size: 0.85rem;
+      }
+      .admin-item .item-actions {
+        display: flex;
+        gap: 0.5rem;
+      }
+      .admin-item .item-actions button {
+        padding: 0.4rem 0.7rem;
+        font-size: 0.75rem;
+        border: 1px solid rgba(201, 169, 97, 0.4);
+        background: transparent;
+        color: var(--text-dim);
+        cursor: pointer;
+        transition: all var(--transition);
+      }
+      .admin-item .item-actions .btn-edit:hover {
+        border-color: var(--gold);
+        color: var(--gold);
+      }
+      .admin-item .item-actions .btn-delete:hover {
+        border-color: var(--danger);
+        color: var(--danger);
+      }
+
+      .add-section {
+        margin-top: 2.5rem;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(201, 169, 97, 0.3);
+      }
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--text-dim);
+        margin-top: 2rem;
+        font-size: 0.85rem;
+      }
+      .back-link:hover {
+        color: var(--wine);
+      }
+
+      .gallery-admin-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+      .gallery-admin-item {
+        position: relative;
+        aspect-ratio: 1;
+        overflow: hidden;
+        border: 1px solid rgba(201, 169, 97, 0.3);
+      }
+      .gallery-admin-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .gallery-admin-item .gallery-delete {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        background: rgba(169, 50, 38, 0.9);
+        color: #fff;
+        border: none;
+        border-radius: 50%;
+        width: 26px;
+        height: 26px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.75rem;
+      }
+      .gallery-admin-item .gallery-delete:hover {
+        background: var(--danger);
+      }
+
+      .empty-state {
+        text-align: center;
+        padding: 2rem;
+        color: var(--text-dim);
+        font-style: italic;
+      }
+
+      @media (max-width: 700px) {
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+        .admin-item {
+          grid-template-columns: 1fr;
+        }
+        .admin-tabs {
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Login -->
+      <div class="admin-login" id="adminLogin">
+        <span class="eyebrow">🔐 Administrador</span>
+        <h1>Panel de Administración</h1>
+        <p style="color: var(--text-dim); font-style: italic;">
+          Karla Argueta · Soprano
+        </p>
+
+        <form class="admin-login-form" id="adminLoginForm">
+          <div class="form-group">
+            <label for="adminPassword">Contraseña</label>
+            <input
+              type="password"
+              id="adminPassword"
+              placeholder="Ingrese la contraseña..."
+              required
+            />
+          </div>
+          <button
+            type="submit"
+            class="btn btn-primary"
+            style="width: 100%; justify-content: center;"
+          >
+            <i class="fas fa-unlock"></i>
+            Iniciar sesión
+          </button>
+          <div class="form-status" id="adminLoginStatus"></div>
+          <div class="password-hint">
+            <i class="fas fa-info-circle"></i>
+            Contraseña:
+            <strong>karla2026</strong>
+          </div>
+        </form>
+      </div>
+
+      <!-- Admin Panel -->
+      <div class="admin-panel" id="adminPanel">
+        <div class="admin-header">
+          <div>
+            <span class="eyebrow">⚙️ Gestión</span>
+            <h1>Panel de Administración</h1>
+          </div>
+          <div style="display: flex; gap: 0.8rem; flex-wrap: wrap;">
+            <a href="/" class="btn btn-outline btn-sm" target="_blank">
+              <i class="fas fa-eye"></i>
+              Ver sitio
+            </a>
+            <button class="btn btn-danger btn-sm" id="adminLogout">
+              <i class="fas fa-sign-out-alt"></i>
+              Cerrar sesión
+            </button>
+          </div>
+        </div>
+
+        <div class="admin-tabs">
+          <span class="admin-tab active" data-tab="concerts">
+            <i class="fas fa-calendar"></i>
+            Conciertos
+          </span>
+          <span class="admin-tab" data-tab="press">
+            <i class="fas fa-newspaper"></i>
+            Prensa
+          </span>
+          <span class="admin-tab" data-tab="gallery">
+            <i class="fas fa-images"></i>
+            Galería
+          </span>
+        </div>
+
+        <!-- Tab: Concerts -->
+        <div class="tab-content active" id="tab-concerts">
+          <div id="adminConcertsList"></div>
+          <div class="add-section">
+            <h3 id="concertFormTitle">➕ Agregar nuevo concierto</h3>
+            <form id="adminConcertForm">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="concertDay">Día</label>
+                  <input
+                    type="text"
+                    id="concertDay"
+                    placeholder="15"
+                    maxlength="2"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="concertMonth">Mes</label>
+                  <input
+                    type="text"
+                    id="concertMonth"
+                    placeholder="Mar"
+                    maxlength="4"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="concertTitle">Título</label>
+                <input
+                  type="text"
+                  id="concertTitle"
+                  placeholder="Recital de Lieder — Schubert y Brahms"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="concertVenue">Lugar</label>
+                <input
+                  type="text"
+                  id="concertVenue"
+                  placeholder="Conservatorio Rimsky-Korsakov"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="concertCity">Ciudad y país</label>
+                <input
+                  type="text"
+                  id="concertCity"
+                  placeholder="San Petersburgo, Rusia"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="concertLink">Enlace de entradas (opcional)</label>
+                <input type="url" id="concertLink" placeholder="https://..." />
+              </div>
+              <button
+                type="submit"
+                class="btn btn-primary"
+                style="width: 100%; justify-content: center;"
+                id="concertSubmitBtn"
+              >
+                <i class="fas fa-plus"></i>
+                Agregar concierto
+              </button>
+              <button
+                type="button"
+                class="btn btn-outline"
+                style="width: 100%; justify-content: center; margin-top: 0.5rem; display: none;"
+                id="concertCancelBtn"
+              >
+                <i class="fas fa-times"></i>
+                Cancelar edición
+              </button>
+              <div class="form-status" id="concertFormStatus"></div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Tab: Press -->
+        <div class="tab-content" id="tab-press">
+          <div id="adminPressList"></div>
+          <div class="add-section">
+            <h3 id="pressFormTitle">➕ Agregar nuevo artículo</h3>
+            <form id="adminPressForm">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="pressOutlet">Medio de comunicación</label>
+                  <input
+                    type="text"
+                    id="pressOutlet"
+                    placeholder="Diario de Centro América"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="pressDate">Fecha</label>
+                  <input
+                    type="text"
+                    id="pressDate"
+                    placeholder="10 de septiembre de 2025"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="pressTitle">Título del artículo</label>
+                <input
+                  type="text"
+                  id="pressTitle"
+                  placeholder="Voz que se eleva y cruza océanos"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="pressExcerpt">Texto / Extracto</label>
+                <textarea
+                  id="pressExcerpt"
+                  placeholder="Texto del artículo o extracto..."
+                  required
+                ></textarea>
+              </div>
+              <div class="form-group">
+                <label for="pressAuthor">Autor / Sección (opcional)</label>
+                <input
+                  type="text"
+                  id="pressAuthor"
+                  placeholder="Por Narcy Vásquez · Sección Artes"
+                />
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="pressLink">Enlace al artículo (opcional)</label>
+                  <input type="url" id="pressLink" placeholder="https://..." />
+                </div>
+                <div class="form-group">
+                  <label for="pressLinkText">Texto del enlace</label>
+                  <input
+                    type="text"
+                    id="pressLinkText"
+                    placeholder="Leer artículo completo"
+                  />
+                </div>
+              </div>
+              <button
+                type="submit"
+                class="btn btn-primary"
+                style="width: 100%; justify-content: center;"
+                id="pressSubmitBtn"
+              >
+                <i class="fas fa-plus"></i>
+                Agregar artículo
+              </button>
+              <button
+                type="button"
+                class="btn btn-outline"
+                style="width: 100%; justify-content: center; margin-top: 0.5rem; display: none;"
+                id="pressCancelBtn"
+              >
+                <i class="fas fa-times"></i>
+                Cancelar edición
+              </button>
+              <div class="form-status" id="pressFormStatus"></div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Tab: Gallery -->
+        <div class="tab-content" id="tab-gallery">
+          <div id="adminGalleryList"></div>
+          <div class="add-section">
+            <h3>➕ Agregar imágenes a la galería</h3>
+            <form id="adminGalleryForm">
+              <div class="form-group">
+                <label for="galleryFiles">
+                  Seleccionar imágenes (puede elegir varias)
+                </label>
+                <input
+                  type="file"
+                  id="galleryFiles"
+                  accept="image/*"
+                  multiple
+                />
+              </div>
+              <button
+                type="submit"
+                class="btn btn-primary"
+                style="width: 100%; justify-content: center;"
+              >
+                <i class="fas fa-upload"></i>
+                Subir imágenes
+              </button>
+              <div class="form-status" id="galleryFormStatus"></div>
+            </form>
+          </div>
+        </div>
+
+        <a href="/" class="back-link">
+          <i class="fas fa-arrow-left"></i>
+          Volver al sitio
+        </a>
+      </div>
+    </div>
+
+    <script>
+      const ADMIN_PASSWORD = "karla2026";
+      const UPLOAD_API = "/api/upload-image.php";
+      const APIs = {
+        concerts: "/api/concerts-admin.php",
+        press: "/api/press-admin.php",
+        gallery: "/api/gallery-admin.php",
+      };
+
+      let data = { concerts: [], press: [], gallery: [] };
+      let editing = { concerts: null, press: null };
+
+      const loginDiv = document.getElementById("adminLogin");
+      const panelDiv = document.getElementById("adminPanel");
+      const loginForm = document.getElementById("adminLoginForm");
+      const loginStatus = document.getElementById("adminLoginStatus");
+      const logoutBtn = document.getElementById("adminLogout");
+
+      function getPassword() {
+        return sessionStorage.getItem("adminPassword") || "";
+      }
+
+      function showStatus(el, type, msg) {
+        el.className = "form-status " + type;
+        el.textContent = msg;
+        setTimeout(() => {
+          if (el.className !== "form-status error") {
+            el.className = "form-status";
+            el.textContent = "";
+          }
+        }, 5000);
+      }
+
+      // Tabs
+      document.querySelectorAll(".admin-tab").forEach((t) => {
+        t.addEventListener("click", function () {
+          document
+            .querySelectorAll(".admin-tab")
+            .forEach((x) => x.classList.remove("active"));
+          document
+            .querySelectorAll(".tab-content")
+            .forEach((x) => x.classList.remove("active"));
+          this.classList.add("active");
+          document
+            .getElementById("tab-" + this.dataset.tab)
+            .classList.add("active");
+          const n = this.dataset.tab;
+          if (n === "concerts") renderConcertsList();
+          if (n === "press") renderPressList();
+          if (n === "gallery") renderGalleryList();
+        });
+      });
+
+      async function fetchData(type) {
+        try {
+          const r = await fetch(APIs[type]);
+          if (!r.ok) throw new Error("error");
+          return await r.json();
+        } catch (e) {
+          return [];
+        }
+      }
+
+      async function saveData(type, items) {
+        const password = getPassword();
+        const r = await fetch(APIs[type], {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ password, items }),
+        });
+        const result = await r.json();
+        if (!r.ok) throw new Error(result.error || "Error");
+        return result;
+      }
+
+      async function uploadImage(file) {
+        const fd = new FormData();
+        fd.append("image", file);
+        const r = await fetch(UPLOAD_API, { method: "POST", body: fd });
+        return await r.json();
+      }
+
+      function genId() {
+        return (
+          Date.now().toString(36) + Math.random().toString(36).substr(2, 5)
+        );
+      }
+
+      // Login
+      loginForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const p = document.getElementById("adminPassword").value;
+        if (p === ADMIN_PASSWORD) {
+          sessionStorage.setItem("adminAuthenticated", "true");
+          sessionStorage.setItem("adminPassword", p);
+          loginDiv.style.display = "none";
+          panelDiv.style.display = "block";
+          loadAllData();
+        } else {
+          loginStatus.className = "form-status error";
+          loginStatus.textContent = "❌ Contraseña incorrecta";
+        }
+      });
+
+      logoutBtn.addEventListener("click", function () {
+        if (confirm("¿Cerrar sesión?")) {
+          sessionStorage.removeItem("adminAuthenticated");
+          sessionStorage.removeItem("adminPassword");
+          location.reload();
+        }
+      });
+
+      async function loadAllData() {
+        const [concerts, press, gallery] = await Promise.all([
+          fetchData("concerts"),
+          fetchData("press"),
+          fetchData("gallery"),
+        ]);
+        data.concerts = concerts;
+        data.press = press;
+        data.gallery = gallery;
+        renderConcertsList();
+        renderPressList();
+        renderGalleryList();
+      }
+
+      // Concerts
+      function renderConcertsList() {
+        const c = document.getElementById("adminConcertsList");
+        if (data.concerts.length === 0) {
+          c.innerHTML =
+            '<div class="empty-state">No hay conciertos agregados.</div>';
+          return;
+        }
+        c.innerHTML = data.concerts
+          .map(
+            (x, i) => `
+          <div class="admin-item">
+            <div>
+              <h4>${x.day} ${x.month} — ${x.title}</h4>
+              <div class="item-preview">${x.venue} · ${x.city}</div>
+            </div>
+            <div class="item-actions">
+              <button class="btn-edit" data-index="${i}"><i class="fas fa-pen"></i></button>
+              <button class="btn-delete" data-index="${i}"><i class="fas fa-trash"></i></button>
+            </div>
+          </div>
+        `,
+          )
+          .join("");
+
+        c.querySelectorAll(".btn-edit").forEach((b) =>
+          b.addEventListener("click", function () {
+            editConcert(parseInt(this.dataset.index));
+          }),
+        );
+        c.querySelectorAll(".btn-delete").forEach((b) =>
+          b.addEventListener("click", async function () {
+            const i = parseInt(this.dataset.index);
+            if (confirm(`¿Eliminar "${data.concerts[i].title}"?`)) {
+              data.concerts.splice(i, 1);
+              await saveData("concerts", data.concerts);
+              renderConcertsList();
+            }
+          }),
+        );
+      }
+
+      function editConcert(i) {
+        const x = data.concerts[i];
+        document.getElementById("concertDay").value = x.day || "";
+        document.getElementById("concertMonth").value = x.month || "";
+        document.getElementById("concertTitle").value = x.title || "";
+        document.getElementById("concertVenue").value = x.venue || "";
+        document.getElementById("concertCity").value = x.city || "";
+        document.getElementById("concertLink").value = x.link || "";
+        editing.concerts = i;
+        document.getElementById("concertFormTitle").textContent =
+          "✏️ Editar concierto";
+        document.getElementById("concertSubmitBtn").innerHTML =
+          '<i class="fas fa-save"></i> Actualizar';
+        document.getElementById("concertCancelBtn").style.display = "flex";
+        document
+          .getElementById("tab-concerts")
+          .scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      document
+        .getElementById("adminConcertForm")
+        .addEventListener("submit", async function (e) {
+          e.preventDefault();
+          const st = document.getElementById("concertFormStatus");
+          const day = document.getElementById("concertDay").value.trim();
+          const month = document.getElementById("concertMonth").value.trim();
+          const title = document.getElementById("concertTitle").value.trim();
+          const venue = document.getElementById("concertVenue").value.trim();
+          const city = document.getElementById("concertCity").value.trim();
+          const link =
+            document.getElementById("concertLink").value.trim() || "#";
+
+          if (!day || !month || !title || !venue || !city) {
+            showStatus(st, "error", "❌ Complete todos los campos");
+            return;
+          }
+
+          const item = { day, month, title, venue, city, link };
+
+          if (editing.concerts !== null) {
+            item.id = data.concerts[editing.concerts].id;
+            data.concerts[editing.concerts] = item;
+            await saveData("concerts", data.concerts);
+            showStatus(st, "success", "✓ Concierto actualizado");
+            document.getElementById("concertCancelBtn").click();
+          } else {
+            item.id = genId();
+            data.concerts.push(item);
+            await saveData("concerts", data.concerts);
+            showStatus(st, "success", "✓ Concierto agregado");
+            this.reset();
+          }
+          renderConcertsList();
+        });
+
+      document
+        .getElementById("concertCancelBtn")
+        .addEventListener("click", function () {
+          editing.concerts = null;
+          document.getElementById("adminConcertForm").reset();
+          document.getElementById("concertFormTitle").textContent =
+            "➕ Agregar nuevo concierto";
+          document.getElementById("concertSubmitBtn").innerHTML =
+            '<i class="fas fa-plus"></i> Agregar concierto';
+          this.style.display = "none";
+        });
+
+      // Press
+      function renderPressList() {
+        const c = document.getElementById("adminPressList");
+        if (data.press.length === 0) {
+          c.innerHTML =
+            '<div class="empty-state">No hay artículos de prensa.</div>';
+          return;
+        }
+        c.innerHTML = data.press
+          .map(
+            (x, i) => `
+          <div class="admin-item">
+            <div>
+              <h4>${x.title}</h4>
+              <div class="item-preview">${x.outlet} · ${x.date}</div>
+            </div>
+            <div class="item-actions">
+              <button class="btn-edit" data-index="${i}"><i class="fas fa-pen"></i></button>
+              <button class="btn-delete" data-index="${i}"><i class="fas fa-trash"></i></button>
+            </div>
+          </div>
+        `,
+          )
+          .join("");
+
+        c.querySelectorAll(".btn-edit").forEach((b) =>
+          b.addEventListener("click", function () {
+            editPress(parseInt(this.dataset.index));
+          }),
+        );
+        c.querySelectorAll(".btn-delete").forEach((b) =>
+          b.addEventListener("click", async function () {
+            const i = parseInt(this.dataset.index);
+            if (confirm(`¿Eliminar "${data.press[i].title}"?`)) {
+              data.press.splice(i, 1);
+              await saveData("press", data.press);
+              renderPressList();
+            }
+          }),
+        );
+      }
+
+      function editPress(i) {
+        const x = data.press[i];
+        document.getElementById("pressOutlet").value = x.outlet || "";
+        document.getElementById("pressDate").value = x.date || "";
+        document.getElementById("pressTitle").value = x.title || "";
+        document.getElementById("pressExcerpt").value = x.excerpt || "";
+        document.getElementById("pressAuthor").value = x.author || "";
+        document.getElementById("pressLink").value = x.link || "";
+        document.getElementById("pressLinkText").value = x.linkText || "";
+        editing.press = i;
+        document.getElementById("pressFormTitle").textContent =
+          "✏️ Editar artículo";
+        document.getElementById("pressSubmitBtn").innerHTML =
+          '<i class="fas fa-save"></i> Actualizar';
+        document.getElementById("pressCancelBtn").style.display = "flex";
+        document
+          .getElementById("tab-press")
+          .scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      document
+        .getElementById("adminPressForm")
+        .addEventListener("submit", async function (e) {
+          e.preventDefault();
+          const st = document.getElementById("pressFormStatus");
+          const outlet = document.getElementById("pressOutlet").value.trim();
+          const date = document.getElementById("pressDate").value.trim();
+          const title = document.getElementById("pressTitle").value.trim();
+          const excerpt = document.getElementById("pressExcerpt").value.trim();
+          const author = document.getElementById("pressAuthor").value.trim();
+          const link = document.getElementById("pressLink").value.trim();
+          const linkText =
+            document.getElementById("pressLinkText").value.trim() ||
+            "Leer artículo";
+
+          if (!outlet || !date || !title || !excerpt) {
+            showStatus(
+              st,
+              "error",
+              "❌ Complete todos los campos obligatorios",
+            );
+            return;
+          }
+
+          const item = { outlet, date, title, excerpt, author, link, linkText };
+
+          if (editing.press !== null) {
+            item.id = data.press[editing.press].id;
+            data.press[editing.press] = item;
+            await saveData("press", data.press);
+            showStatus(st, "success", "✓ Artículo actualizado");
+            document.getElementById("pressCancelBtn").click();
+          } else {
+            item.id = genId();
+            data.press.push(item);
+            await saveData("press", data.press);
+            showStatus(st, "success", "✓ Artículo agregado");
+            this.reset();
+          }
+          renderPressList();
+        });
+
+      document
+        .getElementById("pressCancelBtn")
+        .addEventListener("click", function () {
+          editing.press = null;
+          document.getElementById("adminPressForm").reset();
+          document.getElementById("pressFormTitle").textContent =
+            "➕ Agregar nuevo artículo";
+          document.getElementById("pressSubmitBtn").innerHTML =
+            '<i class="fas fa-plus"></i> Agregar artículo';
+          this.style.display = "none";
+        });
+
+      // Gallery
+      function renderGalleryList() {
+        const c = document.getElementById("adminGalleryList");
+        if (data.gallery.length === 0) {
+          c.innerHTML =
+            '<div class="empty-state">No hay imágenes en la galería.</div>';
+          return;
+        }
+        c.innerHTML = `<div class="gallery-admin-grid">
+          ${data.gallery
+            .map(
+              (img, i) => `
+            <div class="gallery-admin-item">
+              <img src="${img}" alt="Imagen ${i + 1}" />
+              <button class="gallery-delete" data-index="${i}"><i class="fas fa-times"></i></button>
+            </div>
+          `,
+            )
+            .join("")}
+        </div>`;
+        c.querySelectorAll(".gallery-delete").forEach((b) =>
+          b.addEventListener("click", async function () {
+            const i = parseInt(this.dataset.index);
+            if (confirm("¿Eliminar esta imagen?")) {
+              data.gallery.splice(i, 1);
+              await saveData("gallery", data.gallery);
+              renderGalleryList();
+            }
+          }),
+        );
+      }
+
+      document
+        .getElementById("adminGalleryForm")
+        .addEventListener("submit", async function (e) {
+          e.preventDefault();
+          const st = document.getElementById("galleryFormStatus");
+          const files = document.getElementById("galleryFiles").files;
+          if (!files || files.length === 0) {
+            showStatus(st, "error", "❌ Seleccione al menos una imagen");
+            return;
+          }
+          let uploaded = 0;
+          for (const file of files) {
+            showStatus(
+              st,
+              "uploading",
+              `⏳ Subiendo ${uploaded + 1}/${files.length}...`,
+            );
+            const r = await uploadImage(file);
+            if (r.success) {
+              data.gallery.push(r.url);
+              uploaded++;
+            }
+          }
+          await saveData("gallery", data.gallery);
+          showStatus(st, "success", `✓ ${uploaded} imágenes subidas`);
+          this.reset();
+          renderGalleryList();
+        });
+
+      // Auto-login
+      if (sessionStorage.getItem("adminAuthenticated") === "true") {
+        loginDiv.style.display = "none";
+        panelDiv.style.display = "block";
+        loadAllData();
+      }
+    </script>
+  </body>
+</html>
