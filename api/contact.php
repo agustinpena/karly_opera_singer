@@ -37,7 +37,8 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     exit;
 }
 
-$to = 'karlacontactogt@gmail.com'; // CHANGE: Client's email
+// CHANGE TO CLIENT'S EMAIL 
+$to = 'karlacontactogt@gmail.com';
 $subject = 'Nuevo mensaje desde el sitio web | Karla Argueta';
 
 $body = "Nuevo mensaje desde el formulario de contacto:\n\n";
